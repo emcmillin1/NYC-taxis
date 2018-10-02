@@ -1,0 +1,39 @@
+/* remove default margin and padding from body */
+body {
+  padding: 0;
+  margin: 0;
+}
+
+/* set map, body, and html to 100% of the screen size */
+#map,
+body,
+html {
+  height: 90%;
+  width: 90%;
+}
+
+.pickup-marker {
+    background-color: #04b813;
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    left: 0rem;
+    top: 0rem;
+    position: relative;
+    border-radius: 3rem 3rem 0;
+    transform: rotate(45deg);
+    border: 1px solid #FFFFFF`;
+}
+
+.dropoff-marker {
+    background-color: #c71515;
+    width: 3rem;
+    height: 3rem;
+    display: block;
+    left: 0rem;
+    top: 0rem;
+    position: relative;
+    border-radius: 3rem 3rem 0;
+    /* transform: rotate(45deg); */
+    border: 1px solid #FFFFFF`;
+}

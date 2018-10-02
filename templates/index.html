@@ -1,0 +1,94 @@
+<head>
+    <meta charset="utf-8">
+    <title>Taxi Map</title>
+
+    <!-- Leaflet CSS & JS -->
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.2/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.0.2/dist/leaflet.js"></script>
+
+    <!-- D3 JS -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/d3/5.7.0/d3.js"></script>
+
+    <!-- Our CSS -->
+    <link rel="stylesheet" type="text/css" href="static/css/style.css">
+</head>
+
+<body>
+
+    <h1>Select the Filters that you're interested in: </h1>
+
+    <div>
+
+        <label for="latitude">Dropoff Latitude:</label>
+        <input type="number" id="lat" name="latitude" value=40.712508>
+
+        <br>
+
+        <label for="longitude">Dropoff Longitude:</label>
+        <input type="number" id="lon" name="longitude" value=-73.998233>
+
+        <br>
+
+        <label for="Distance">Distance Threshold</label>
+        <input type="number" id="distance" name="distance" value=100>
+
+        <br>
+        
+        <label for="metric">Metric</label>
+        <select id="metric" name="metric">
+            <option value="meters">Meters</option>
+            <option value="kilometers">Kilometers</option>
+            <option value="miles">Miles</option>
+            <option value="feet">Feet</option>
+        </select>
+        
+        <br>
+        
+        <label for="Trip Distance">Trip Distance</label>
+        <input type="number" id="tripDistance" name="tripDistance" value=''>
+        
+        <br>
+        
+        <label for="tripDistanceFilter">Trip Distance Filter</label>
+        <select id="tripDistanceFilter" name="tripDistanceFilter">
+            <option value="gt">Greater Than</option>
+            <option value="lt">Less Than</option>
+        </select>
+
+        <br>
+        
+        <label for="paymentType">Payment Type</label>
+        <select id="paymentType" name="Payment Type">
+            <option value=""></option>
+            <option value="CRD">Card</option>
+            <option value="CSH">Cash</option>
+        </select>
+
+        <br>
+
+        <div>
+            <label for="start">Start Date</label>
+            <input type="date" id="start" name="trip" value="" min="2015-04-15" max="2015-04-30" />
+        </div>
+        
+        <div>
+            <label for="end">End</label>
+            <input type="date" id="end" name="trip" value="" min="2015-04-15" max="2015-04-30"/>
+        </div>
+
+        <label for="maxResults">Max Results</label>
+        <input type="number" id="maxResults" name="maxResults" value=100>
+        
+        <br>
+
+        <button onclick="buildMap()">Build Map</button>
+
+    </div>
+
+    <h2>Taxi Cab Map</h2>
+    <!-- The div where we will inject our map -->
+    <div id="map">Taxi-Map</div>
+    
+    <!-- Our JS -->
+    <script type="text/javascript" src="static/js/logic.js"></script>
+</body>
