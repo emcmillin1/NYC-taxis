@@ -1,4 +1,4 @@
-# Spark-taxis# Spark Taxis Data Manipulation Demo 
+# Spark-taxis# Spark Taxis Data Manipulation Demo
 
 ## Context:
 
@@ -6,7 +6,7 @@ I found a 130GB public data source containing information about ~1.1B Taxi Rides
 
 ## Data:
 
-To avoid having everybody instantiate and configure a Google Cloud Account I've already performed a query against the Google Big Query dataset in order to get it into a reasonably sized csv for everyone to work with. If anybody is curious about what this looked like: 
+To avoid having everybody instantiate and configure a Google Cloud Account I've already performed a query against the Google Big Query dataset in order to get it into a reasonably sized csv for everyone to work with. If anybody is curious about what this looked like:
 
 ```sql
 SELECT
@@ -24,22 +24,27 @@ WHERE
 
 ## Starter Code:
 
-I already built a Flask app and Leaflet/D3 script to visualize the result of the data filter. This includes a number of input boxes used to pass parameters into the different filter functions that we will be building out.
+I already built a Flask app and Leaflet/D3 script to visualize the result of the data filter. This includes a number of input boxes used to pass parameters into the different filter functions that we will be building out. **Notice: The script references a file at data/filered_taxis.csv, due to Github's new 100MB file limit this file is zipped. Unzip it before attempting to run the code**
 
 ## Our task:
 
-Everything is working except for the data pipeline at this point. With that said, our task is to build out the spark.py script to do everything we want it to. This includes:
+The Flask app and Leaflet Plotting script are already implemented and functioning. Additionally, the base data pipeline, including reading the file from the CSV with a user defined schema, filtering on html input, and returning the matching results in JSON format through the Flask App to the Javascript file. With that said, there are two ways we can approach this problem:
 
-* Reading in the data from csv source
+1. ###### We can rebuild the initial data pipeline to work on the initial operations in spark. This would include:
 
-* Casting columns as specific data types
+  * Reading in the data from csv source
+  * Casting columns as specific data types
+  * Defining functions to build out new columns
+  * Defining functions to filter data
+  * Converting The results into JSON format for the D3.json call
+  * All of these aspects should be parameterized
 
-* Defining functions to build out new columns
+2. ###### We can implement additional filters on top of the existing pipeline in Spark. The available parameters that are already being unpacked in the Flask App include:
 
-* Defining functions to filter data 
+  * Trip Distance
+  * Trip Distance Filter
+  * Payment Type
+  * Start Date
+  * End
 
-* Converting The results into JSON format for the D3.json call
-
-* All of these aspects should be parameterized
-
-**I'm probably forgetting a few things, but this should be enough to get started.**
+Also, to prepare for next week, I was thinking that we could show how to scale this application to the full dataset by executing the spark job against the Google Big Query Public dataset directly using Google Cloud compute clusters. 
